@@ -1,0 +1,98 @@
+﻿<Window x:Class="ProjectManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Управление проектами" Height="570" Width="900"
+        MinHeight="450" MinWidth="700"
+        WindowStartupLocation="CenterScreen"
+        Background="#F2F5F9" FontFamily="Segoe UI">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#3978C5"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="12,7"/>
+            <Setter Property="Margin" Value="0,0,8,0"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="#F3F7FC"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="RowHeight" Value="32"/>
+            <Setter Property="ColumnHeaderHeight" Value="36"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="AutoGenerateColumns" Value="True"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Margin="0,0,0,16">
+            <TextBlock Text="Управление проектами"
+                       FontSize="25" FontWeight="Bold"
+                       Foreground="#243650"/>
+            <TextBlock Text="Проекты, сотрудники, задачи и отчётность"
+                       Foreground="#718096" Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <TabControl Grid.Row="1" Background="White"
+                    BorderBrush="#DCE4EE" Padding="8">
+
+            <TabItem Header="Проекты">
+                <DockPanel Margin="8">
+                    <StackPanel DockPanel.Dock="Top"
+                                Orientation="Horizontal" Margin="0,0,0,12">
+                        <Button Content="+ Добавить" Click="AddProject"/>
+                        <Button Content="Удалить" Background="#D9534F"
+                                Click="DeleteProject"/>
+                        <Button Content="Сохранить" Background="#39866B"
+                                Click="SaveProjects"/>
+                    </StackPanel>
+                    <DataGrid x:Name="ProjectsGrid"/>
+                </DockPanel>
+            </TabItem>
+
+            <TabItem Header="Сотрудники">
+                <DockPanel Margin="8">
+                    <StackPanel DockPanel.Dock="Top"
+                                Orientation="Horizontal" Margin="0,0,0,12">
+                        <Button Content="+ Добавить" Click="AddEmployee"/>
+                        <Button Content="Удалить" Background="#D9534F"
+                                Click="DeleteEmployee"/>
+                        <Button Content="Сохранить" Background="#39866B"
+                                Click="SaveEmployees"/>
+                    </StackPanel>
+                    <DataGrid x:Name="EmployeesGrid"/>
+                </DockPanel>
+            </TabItem>
+
+            <TabItem Header="Задачи">
+                <DockPanel Margin="8">
+                    <StackPanel DockPanel.Dock="Top">
+                        <TextBlock Text="Добавляйте задачи и следите за прогрессом."
+                                   Foreground="#718096" Margin="0,0,0,12"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,0,0,12">
+                            <Button Content="+ Добавить" Click="AddTask"/>
+                            <Button Content="Удалить" Background="#D9534F"
+                                    Click="DeleteTask"/>
+                            <Button Content="Сохранить" Background="#39866B"
+                                    Click="SaveTasks"/>
+                            <Button Content="Отчёт" Background="#596579"
+                                    Click="ShowReport"/>
+                        </StackPanel>
+                    </StackPanel>
+                    <DataGrid x:Name="TasksGrid"/>
+                </DockPanel>
+            </TabItem>
+
+        </TabControl>
+    </Grid>
+</Window>

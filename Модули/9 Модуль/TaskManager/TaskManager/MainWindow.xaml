@@ -1,0 +1,76 @@
+﻿<Window x:Class="TaskManager.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Менеджер задач"
+        Height="550" Width="850">
+
+    <DockPanel Margin="10">
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock Text="Название задачи" Margin="5"/>
+
+            <TextBox x:Name="TitleBox" Margin="5"/>
+
+            <WrapPanel Margin="5">
+                <TextBlock Text="Приоритет:" VerticalAlignment="Center"/>
+
+                <ComboBox x:Name="PriorityBox"
+                          Width="120"
+                          Margin="5"
+                          SelectedIndex="1">
+                    <ComboBoxItem Content="Низкий"/>
+                    <ComboBoxItem Content="Средний"/>
+                    <ComboBoxItem Content="Высокий"/>
+                </ComboBox>
+
+                <TextBlock Text="Срок:"
+                           VerticalAlignment="Center"/>
+
+                <DatePicker x:Name="DueDatePicker"
+                            Width="140"
+                            Margin="5"/>
+            </WrapPanel>
+
+            <WrapPanel Margin="5">
+                <TextBlock Text="Статус:"
+                           VerticalAlignment="Center"/>
+
+                <ComboBox x:Name="StatusBox"
+                          Width="140"
+                          Margin="5"
+                          SelectedIndex="0">
+                    <ComboBoxItem Content="Не начата"/>
+                    <ComboBoxItem Content="В работе"/>
+                    <ComboBoxItem Content="Завершена"/>
+                </ComboBox>
+
+                <TextBlock Text="Прогресс (%):"
+                           VerticalAlignment="Center"/>
+
+                <TextBox x:Name="ProgressBox"
+                         Width="60"
+                         Margin="5"
+                         Text="0"/>
+            </WrapPanel>
+
+            <WrapPanel>
+                <Button Content="Добавить"
+                        Click="AddTask"
+                        Margin="5"/>
+
+                <Button Content="Изменить выбранную"
+                        Click="EditTask"
+                        Margin="5"/>
+
+                <Button Content="Удалить"
+                        Click="DeleteTask"
+                        Margin="5"/>
+            </WrapPanel>
+        </StackPanel>
+
+        <DataGrid x:Name="TasksGrid"
+                  AutoGenerateColumns="True"
+                  IsReadOnly="True"
+                  SelectionChanged="SelectTask"
+                  Margin="5"/>
+    </DockPanel>
+</Window>
